@@ -107,7 +107,7 @@ export function Dashboard({ currentPage, onModalStateChange }) {
     },
   ];
 
-
+//---------------------CONTACT US PAGE -______________________------
 
   if (currentPage === 'contact') {
     return (
@@ -139,7 +139,8 @@ export function Dashboard({ currentPage, onModalStateChange }) {
               <h3 className="text-xl font-bold text-gray-800">Email Support</h3>
             </div>
             <p className="text-xl font-semibold text-blue-600 mb-2">
-              support@paralink.com
+              {/* render to gmail */}
+              <a style={{ textDecoration: 'none' }} href="mailto: [EMAIL_ADDRESS]">support@paralink.com</a>
             </p>
             <p className="text-gray-600">Response within 24 hours</p>
           </div>
@@ -153,9 +154,9 @@ export function Dashboard({ currentPage, onModalStateChange }) {
               <h3 className="text-xl font-bold text-gray-800">Visit Us</h3>
             </div>
             <p className="text-gray-700">
-              123 Healthcare Ave<br />
+              123 Healthcare SYS<br />
               Medical City, MC 12345<br />
-              United States
+              Pakistan, Kohat
             </p>
           </div>
 
