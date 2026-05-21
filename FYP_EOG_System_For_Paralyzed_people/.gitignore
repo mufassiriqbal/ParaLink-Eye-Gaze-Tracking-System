@@ -21,3 +21,16 @@ dist-ssr
 *.sln
 *.sw?
 .env
+
+# AI Tool Configs
+.cursor/
+.agents/
+.jetro/
+.windsurfrules
+.mcp.json
+CLAUDE.md
+AGENT.md
+.github/copilot-instructions.md
+lint_results.json
+data/
+projects/

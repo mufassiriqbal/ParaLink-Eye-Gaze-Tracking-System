@@ -48,6 +48,20 @@ ENV/
 artifacts/
 brain/
 scratch/
+data/
+projects/
+
+# AI Tool Configs
+.cursor/
+.agents/
+.windsurfrules
+.mcp.json
+CLAUDE.md
+AGENT.md
+.github/copilot-instructions.md
+
+# Lint Output
+lint_results.json
 
 # IDEs
 .vscode/
