@@ -5,13 +5,13 @@ import { Eye, Move } from 'lucide-react';
 export function BlinkIndicator() {
   const { blinkCount, isEogEnabled, eogMode } = useEog();
   
-  // Dragging state
+  // Draggingg state
   const [position, setPosition] = useState({ x: window.innerWidth - 260, y: 24 });
   const [isDragging, setIsDragging] = useState(false);
   const offsetRef = useRef({ x: 0, y: 0 });
 
   const handleMouseDown = (e) => {
-    if (e.button !== 0) return; // Only left click
+    if (e.button !== 0) return; // Only left sideeclick
     setIsDragging(true);
     offsetRef.current = {
       x: e.clientX - position.x,
@@ -25,7 +25,7 @@ export function BlinkIndicator() {
       const newX = e.clientX - offsetRef.current.x;
       const newY = e.clientY - offsetRef.current.y;
       
-      // Keep within bounds
+      // Keepn inw within bounds
       const boundedX = Math.max(0, Math.min(newX, window.innerWidth - 240));
       const boundedY = Math.max(0, Math.min(newY, window.innerHeight - 150));
       
@@ -84,7 +84,7 @@ export function BlinkIndicator() {
           </div>
         </div>
 
-        {/* Instructions */}
+        {/* minier Instructions */}
         <div className="mt-3">
           <p className="text-xs text-gray-500 text-center">
             {eogMode === 'webcam' ? (

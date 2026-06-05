@@ -1,13 +1,10 @@
 """
-IoT Service — ESP32 Device Control (Phase 2)
-================================================
-Sends commands to ESP32 via Serial (USB) or HTTP (WiFi).
-Transport mode is configured in config.py (IOT_MODE).
+IoT Service — ESP32 Device ka Control ha (Phase 2)
+Sends commands to ESP32 via Serial (USB) or HTTP (WiFi).jo cable ha hamary pass waha sy jati ha 
+Transport mode is configured in config.py (IOT_MODE). jo 9600 baand rate ha hamary pass waha sy  jati ha 
 
-Serial Mode: Sends single-character commands via COM port (pyserial).
-WiFi Mode:   Sends HTTP GET requests to ESP32 web server.
+haWiFi Mode:   Sends HTTP GET requests to ESP32 web server.mary pass 
 
-Tracks device state in-memory. Gracefully handles offline ESP32.
 """
 
 import httpx
@@ -66,6 +63,17 @@ async def send_device_command(value: str) -> dict:
         return await _handle_all_devices("ON")
     elif value_lower == "all_off":
         return await _handle_all_devices("OFF")
+
+    # ── TOGGLE LOGIC haaaa
+    if value_lower.endswith("_on"):
+        device_name = value_lower[:-3]          # e.g. "light_on" → "light"
+        current = _device_states.get(device_name, "OFF")
+        if current in ("ON", "DIM", "BRIGHT", "HIGH", "LOW", "WARM", "COOL"):
+            value_lower = f"{device_name}_off"  # flip to OFF
+            logger.info(f"[TOGGLE] {device_name} was {current} → sending OFF")
+        else:
+            logger.info(f"[TOGGLE] {device_name} was {current} → sending ON")
+    # ──────────────────────────────────────────────────────────────────
 
     # Look up the command
     if value_lower not in DEVICE_COMMAND_MAP:

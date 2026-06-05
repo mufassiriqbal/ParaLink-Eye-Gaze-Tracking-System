@@ -1,17 +1,11 @@
-/**
- * API Service — Centralized Backend Communication
- * ==================================================
- * All frontend-to-backend API calls go through this service.
- * Handles errors gracefully with fallback behavior.
- *
+/*All frontend-to-backend API calls go through this service.
+
  * Backend URL: http://localhost:8000
  */
 
 const API_BASE_URL = 'http://localhost:8000';
 
-/**
- * Generic fetch wrapper with error handling and logging.
- */
+
 async function apiFetch(endpoint, options = {}) {
   const url = `${API_BASE_URL}${endpoint}`;
 
@@ -45,13 +39,9 @@ async function apiFetch(endpoint, options = {}) {
   }
 }
 
-// ──────────────────────────────────────────────
-// API Methods
-// ──────────────────────────────────────────────
 
 /**
  * Health check — test if backend is running.
- * GET /health
  */
 export async function checkHealth() {
   return apiFetch('/health');
@@ -82,24 +72,22 @@ export async function getSuggestions() {
 }
 
 /**
- * Get recent action history.
- * GET /history
+ * GEttT /history
  */
 export async function getHistory() {
   return apiFetch('/history');
 }
 
 /**
- * Get current IoT device states.
- * GET /devices/status
+ * GeIoT device states.
  */
 export async function getDeviceStatus() {
   return apiFetch('/devices/status');
 }
 
 /**
- * Play audio from a backend-generated URL.
- * Falls back to browser TTS if audio fails.
+ * Play audio backend-generat URL.
+ * Falls back to browseur TTS if audio fails.
  *
  * @param {string} audioUrl - Relative URL from backend (e.g. "/audio/file.mp3")
  * @param {string} fallbackText - Text to speak via browser TTS if audio fails

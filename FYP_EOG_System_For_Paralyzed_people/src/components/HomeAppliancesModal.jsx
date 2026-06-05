@@ -6,18 +6,14 @@ import { useEog } from '../contexts/EogContext.jsx';
 import { ttsService } from '../services/TtsService.js';
 import { sendSelection, getDeviceStatus } from '../services/ApiService.js';
 
-/**
- * Single Appliance Card Component
- */
+/** Single Appliance Card Component*/
 function ApplianceCard({ card, index, deviceState, isSelected, onSelect, onExpand, blinkCount }) {
   const Icon = card.icon;
   
-  // Blink (EOG) selection: triggers the toggle
   const handleBlinkSelect = () => {
     onSelect(card.id);
   };
 
-  // Click: expands action buttons
   const handleClick = (e) => {
     e.stopPropagation();
     onExpand(card.id);
@@ -85,9 +81,7 @@ function ApplianceCard({ card, index, deviceState, isSelected, onSelect, onExpan
   );
 }
 
-/**
- * Helper component for specific action buttons (Dim, Volume, etc)
- */
+/** Helper component for specific action buttons (Dim, Volume, etc)*/
 function ActionButton({ action, onSelect }) {
   const { isFocused, eogProps } = useEogSelection({
     id: `action-${action.value}`,
@@ -210,12 +204,9 @@ export function HomeAppliancesModal({ onClose }) {
       }
     } catch (err) {
       console.warn('Status poll failed:', err.message);
-      // Don't set to false immediately on one failed poll, 
-      // but keep last known state.
     }
   }, []);
 
-  // Polling for status updates every 5 seconds
   useEffect(() => {
     refreshStatus();
     const interval = setInterval(refreshStatus, 5000);
@@ -228,7 +219,6 @@ export function HomeAppliancesModal({ onClose }) {
   };
 
   const handleDeviceAction = useCallback((actionValue, isSubAction = false) => {
-    // Determine the target device ID and the specific action
     let deviceId, action;
     
     if (actionValue.includes('_')) {
@@ -236,12 +226,10 @@ export function HomeAppliancesModal({ onClose }) {
       deviceId = parts[0];
       action = parts[1];
     } else {
-      // Toggle logic for primary blink select
       deviceId = actionValue;
       const currentState = deviceStates[deviceId];
       
       if (deviceId === 'all') {
-        // If "All Devices" is targeted, turn OFF if ANY device is currently ON
         const anyOn = Object.entries(deviceStates).some(([id, state]) => id !== 'all' && state === 'ON');
         action = anyOn ? 'off' : 'on';
       } else {
@@ -253,12 +241,10 @@ export function HomeAppliancesModal({ onClose }) {
 
     console.log(`Action: ${actionValue} on ${deviceId}`);
     
-    // Feedback
     const speechLabel = actionValue.replace(/_/g, ' ');
     ttsService.speak(speechLabel, language);
     showToast(`Sending: ${speechLabel}...`);
 
-    // Send to backend
     sendSelection('device', actionValue, language)
       .then(response => {
         if (response.device_status) {
@@ -281,7 +267,6 @@ export function HomeAppliancesModal({ onClose }) {
         showToast(`FAILED: ${error.message}`);
       });
       
-    // Expand the card if it was a primary blink
     if (!isSubAction) {
       setSelectedAppliance(prev => (prev === deviceId ? null : deviceId));
     }
@@ -325,7 +310,7 @@ export function HomeAppliancesModal({ onClose }) {
           </button>
         </div>
 
-        {/* Success Toast */}
+        {/* Success ToastMessages */}
         {successMessage && (
           <div className="fixed inset-x-0 top-6 z-[9999] flex justify-center pointer-events-none">
             <div className="bg-teal-600 text-white px-6 py-3 rounded-full shadow-2xl flex items-center gap-3 border-2 border-white/20 backdrop-blur-md max-w-md toast-slide-down">
@@ -352,7 +337,7 @@ export function HomeAppliancesModal({ onClose }) {
               />
             ))}
           </div>
-
+{/* !!!!!!!!!!!!!!!!!!!!! */}
           {/* Instructions */}
           <div className="bg-gradient-to-r from-blue-50 to-purple-50 rounded-xl sm:rounded-2xl p-4 sm:p-5 md:p-6 mt-4 sm:mt-6 border border-blue-100">
             <h3 className="text-base sm:text-lg font-bold text-gray-800 mb-3 sm:mb-4">How to use:</h3>

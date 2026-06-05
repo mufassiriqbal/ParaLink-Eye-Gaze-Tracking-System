@@ -66,7 +66,7 @@ export function Sidebar({ currentPage, onPageChange, language, onLanguageChange,
 
   const handlePageChange = (pageId) => {
     onPageChange(pageId);
-    if (onClose) onClose(); // Close sidebar on mobile after navigation
+    if (onClose) onClose();
   };
 
   return (
@@ -92,7 +92,6 @@ export function Sidebar({ currentPage, onPageChange, language, onLanguageChange,
 
         {/* EOG Toggle */}
         <div className="pt-3 sm:pt-4 border-t border-white/20 mt-3 sm:mt-4">
-        {/* --------- */}
           <button
             onClick={() => setEogEnabled(!isEogEnabled)}
             className={`w-full flex items-center justify-between px-3 sm:px-4 py-2 sm:py-3 rounded-xl transition-all duration-300 transform hover:scale-105 ${
@@ -166,8 +165,7 @@ export function Sidebar({ currentPage, onPageChange, language, onLanguageChange,
       </nav>
 
       <div className="p-3 sm:p-4 border-t border-white/20">
-      
-      {/* ----- sign out button ------------*/}
+        {/* Sign Out Button */}
         <button
           {...signOutEogProps}
           onClick={signOut}

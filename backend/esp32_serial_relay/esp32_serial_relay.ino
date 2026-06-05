@@ -1,8 +1,6 @@
 /*
-  ParaLink ESP32 Serial Relay Controller (Phase 2)
-  ================================================
-  Listens to the Serial port at 9600 baud for single-character commands 
-  from the Python backend to toggle GPIO relays.
+  9600 baud  
+  Python backend  GPIO relays.
 
   Hardware Map:
   - GPIO 23 -> Light Relay
@@ -28,19 +26,14 @@ const int RELAY_AC = 19;
 const int RELAY_ROUTER = 18;
 
 void setup() {
-  // 1. Initialize Serial Communication at 9600 baud
   Serial.begin(9600);
   
-  // 2. Set pins as OUTPUT
   pinMode(RELAY_LIGHT, OUTPUT);
   pinMode(RELAY_FAN, OUTPUT);
   pinMode(RELAY_TV, OUTPUT);
   pinMode(RELAY_AC, OUTPUT);
   pinMode(RELAY_ROUTER, OUTPUT);
 
-  // 3. Initialize all relays to OFF (HIGH or LOW depends on your relay module)
-  // Assuming Active-LOW relays (LOW = ON, HIGH = OFF)
-  // Change to LOW if you have Active-HIGH relays
   digitalWrite(RELAY_LIGHT, HIGH);
   digitalWrite(RELAY_FAN, HIGH);
   digitalWrite(RELAY_TV, HIGH);
@@ -51,12 +44,9 @@ void setup() {
 }
 
 void loop() {
-  // Check if there is incoming serial data
   if (Serial.available() > 0) {
-    // Read the incoming character
     char incomingCommand = Serial.read();
 
-    // Process the command
     switch (incomingCommand) {
       // --- LIGHT ---
       case 'A': digitalWrite(RELAY_LIGHT, LOW); Serial.println("LIGHT_ON"); break;

@@ -19,8 +19,6 @@ function AppContent() {
   const [language, setLanguage] = useState('en');
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
-  // User preference - sidebar hides when modals are open
-  // To undo: Run in browser console: localStorage.setItem('hideSidebarOnModal', 'false')
   const [hideSidebarOnModal, setHideSidebarOnModal] = useState(true);
 
   useEffect(() => {
@@ -35,7 +33,6 @@ function AppContent() {
   }, [user]);
 
   const loadUserPreferences = () => {
-    // Load preferences from localStorage
     const savedLanguage = localStorage.getItem('language');
     if (savedLanguage) {
       setLanguage(savedLanguage);
@@ -43,7 +40,6 @@ function AppContent() {
       localStorage.setItem('language', 'en');
     }
     
-    // Load sidebar hiding preference
     const savedHideSidebarPref = localStorage.getItem('hideSidebarOnModal');
     if (savedHideSidebarPref !== null) {
       setHideSidebarOnModal(savedHideSidebarPref === 'true');

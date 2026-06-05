@@ -1,224 +1,258 @@
-# EOG Communication System for Paralyzed People
+# ParaLink — EOG Communication System for Paralyzed Individuals
 
-A comprehensive and accessible communication application designed specifically for paralyzed patients using **Electrooculography (EOG)** technology. This application provides an intuitive interface that enables users to communicate, access news, and reach emergency contacts through eye movements.
+A full-stack assistive communication application designed for paralyzed patients using **Electrooculography (EOG)** technology. The system enables users to communicate, control home appliances, read news, and send emergency alerts entirely through eye blinks — without any physical interaction.
 
-## 🎯 Project Overview
+## Project Overview
 
-This Final Year Project (FYP) aims to bridge the communication gap for paralyzed individuals by leveraging EOG signals to create a user-friendly, accessible digital communication platform. The application features calming colors, smooth animations, and large interactive elements optimized for EOG-based interaction.
+**ParaLink** is a Final Year Project (FYP) that bridges the communication gap for individuals with severe motor disabilities. It uses EOG signals (detected via a webcam using MediaPipe FaceLandmarker, or simulated via keyboard) to let patients navigate a touch-free digital interface. All selections are made by blinking 3 times on a focused element, and 2 blinks close or go back.
 
-## ✨ Key Features
-
-### 🔐 Authentication System
-- **Secure Login & Signup**: User authentication powered by Supabase
-- **Animated Transitions**: Smooth, calming animations throughout the auth flow
-- **User-Friendly Forms**: Large, accessible input fields designed for EOG interaction
-
-### 🏠 Main Dashboard
-- **Welcome Animation**: Engaging welcome screen on first login
-- **Sidebar Navigation**: Easy access to:
-  - Home
-  - Contact
-  - About
-  - Language Selector
-- **Interactive Category Cards**:
-  - Communication Module
-  - News Section
-  - Emergency Contacts
-
-### 💬 Communication Module
-- **Emotion Expression**: Selectable emotion cards with:
-  - Visual emoji representations
-  - Clear descriptions
-  - Large, accessible buttons
-- **Quick Communication**: Pre-defined phrases for common needs
-
-### 📰 News Section
-- Browse news by categories
-- Accessible content presentation
-- Easy navigation between articles
-
-### 🚨 Emergency Contacts
-- Quick access to critical contacts
-- One-tap emergency notifications
-- Pre-configured emergency messages
-
-### 🌍 Multi-Language Support
-- Language selector integrated into the interface
-- Persistent language preferences
-- Support for multiple languages
-
-## 🛠️ Technology Stack
-
-### Frontend
-- **React 18.3.1**: Modern UI library for building interactive interfaces
-- **TypeScript 5.5.3**: Type-safe development
-- **Vite 5.4.2**: Fast build tool and development server
-- **Tailwind CSS 3.4.1**: Utility-first CSS framework for styling
-
-### Backend & Database
-- **Supabase**: Backend-as-a-Service for authentication and data management
-- **PostgreSQL**: Robust database through Supabase
-
-### Development Tools
-- **ESLint**: Code linting and quality assurance
-- **PostCSS & Autoprefixer**: CSS processing and browser compatibility
-- **TypeScript ESLint**: TypeScript-specific linting rules
-
-### UI Components
-- **Lucide React**: Beautiful, consistent icons
-
-## 📋 Prerequisites
-
-Before you begin, ensure you have the following installed:
-- **Node.js** (v18 or higher)
-- **npm** or **yarn** package manager
-- A **Supabase account** (for backend services)
-
-## 🚀 Installation
-
-1. **Clone the repository**
-   ```bash
-   git clone <repository-url>
-   cd FYP_EOG_System_For_Paralyzed_people
-   ```
-
-2. **Install dependencies**
-   ```bash
-   npm install
-   ```
-
-3. **Configure environment variables**
-   
-   Create a `.env` file in the root directory by copying `.env.example`:
-   ```bash
-   cp .env.example .env
-   ```
-   
-   Update the `.env` file with your Supabase credentials:
-   ```env
-   VITE_SUPABASE_URL=your-supabase-url
-   VITE_SUPABASE_ANON_KEY=your-supabase-anon-key
-   ```
-
-4. **Set up Supabase database**
-   
-   Run the SQL migrations located in the `supabase` directory to set up your database schema.
-
-## 💻 Usage
-
-### Development Mode
-
-Start the development server:
-```bash
-npm run dev
-```
-
-The application will be available at `http://localhost:5174` (or `5173` if no other projects are running).
-
-> [!TIP]
-> Always check your terminal output after running `npm run dev` to see the exact URL.
-
-### Build for Production
-
-Create an optimized production build:
-```bash
-npm run build
-```
-
-### Preview Production Build
-
-Preview the production build locally:
-```bash
-npm run preview
-```
-
-### Linting
-
-Run ESLint to check code quality:
-```bash
-npm run lint
-```
-
-### Type Checking
-
-Run TypeScript type checking:
-```bash
-npm run typecheck
-```
-
-## 📁 Project Structure
-
-```
-FYP_EOG_System_For_Paralyzed_people/
-├── src/
-│   ├── components/          # React components
-│   │   ├── Dashboard.tsx    # Main dashboard
-│   │   ├── Login.tsx        # Login component
-│   │   ├── SignUp.tsx       # Signup component
-│   │   ├── WelcomeScreen.tsx # Welcome animation
-│   │   └── Sidebar.tsx      # Navigation sidebar
-│   ├── contexts/            # React contexts
-│   │   └── AuthContext.tsx  # Authentication context
-│   ├── lib/                 # Utility libraries
-│   │   └── supabase.ts      # Supabase client
-│   ├── App.tsx              # Main application component
-│   ├── main.tsx             # Application entry point
-│   └── index.css            # Global styles
-├── supabase/                # Database migrations and config
-├── public/                  # Static assets
-├── .env.example             # Environment variables template
-├── package.json             # Dependencies and scripts
-├── tsconfig.json            # TypeScript configuration
-├── tailwind.config.js       # Tailwind CSS configuration
-├── vite.config.ts           # Vite configuration
-└── README.md                # This file
-```
-
-## 🎨 Design Philosophy
-
-The application is built with **accessibility and usability** as top priorities:
-
-- **Calming Color Palette**: Teal and cyan gradients to reduce visual stress
-- **Large Interactive Elements**: Optimized for EOG-based selection
-- **Smooth Animations**: Gentle transitions that provide feedback without overwhelming
-- **High Contrast**: Ensures readability for users with varying visual abilities
-- **Responsive Design**: Works across different screen sizes and devices
-
-## 🔒 Security
-
-- User authentication is handled securely through Supabase
-- Environment variables keep sensitive credentials safe
-- All user data is encrypted and stored securely
-- Session management with automatic token refresh
-
-## 🤝 Contributing
-
-Contributions are welcome! Please follow these steps:
-
-1. Fork the repository
-2. Create a feature branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
-4. Push to the branch (`git push origin feature/AmazingFeature`)
-5. Open a Pull Request
-
-## 📝 License
-
-This project is part of a Final Year Project (FYP) and is intended for educational purposes.
-
-## 👥 Authors
-
-Final Year Project - EOG System Development Team
-
-## 🙏 Acknowledgments
-
-- Special thanks to all contributors and testers
-- Inspired by the need to improve quality of life for paralyzed individuals
-- Built with modern web technologies and accessibility best practices
-
-## 📧 Contact
-
-For questions, suggestions, or collaboration opportunities, please reach out through the project's issue tracker.
+The system consists of:
+- A **React frontend** served via Vite
+- A **Python FastAPI backend** that handles TTS (gTTS), IoT device control via ESP32, and selection history
 
 ---
 
-**Note**: This is an active development project. Features and documentation will be updated regularly.
+## Key Features
+
+### Authentication
+- Secure email/password login and signup via **Supabase**
+- Animated welcome screen shown once per session
+
+### Dashboard — Category Cards
+- **Communication** — Express emotions/needs via selectable cards with multilingual text-to-speech
+- **News** — Browse health, tech, world news, and trending articles by category
+- **Home Appliances** — Control lights, fan, TV, AC, and WiFi router via ESP32 (GPIO-based relay)
+- **Emergency** — One-blink-to-alert for nurse, medication, medical alert, and emergency services
+
+### EOG Blink Detection
+- **Keyboard Mode** — Spacebar simulates blinks (for demo/testing)
+- **WebCam Mode** — Real-time eye tracking using browser-based MediaPipe FaceLandmarker (no Python needed for tracking)
+- Blink counter displayed live on focused element (e.g. `2/3`)
+
+### Text-to-Speech (3-Layer Fallback)
+1. **Backend gTTS** (`http://localhost:8000/tts`) — Best quality
+2. **Browser SpeechSynthesis** — Instant, used if voice is available
+3. **Google Translate TTS** — Reliable fallback for Urdu, Arabic, and all supported languages
+
+### Multi-Language Support
+Supports 6 languages: English, Urdu, Arabic, Spanish, French, German  
+Language preference is persisted in `localStorage`.
+
+### Home Appliance Control (IoT)
+- Communicates with ESP32 microcontroller via Python serial relay
+- Devices: Lights (GPIO 23), Fan (GPIO 22), TV (GPIO 21), AC (GPIO 19), WiFi Router
+- Live device status polling every 5 seconds
+- Commands sent to `POST /select` with `type: "device"`
+
+---
+
+## Technology Stack
+
+### Frontend
+| Technology | Version | Purpose |
+|---|---|---|
+| React | 18.3.1 | UI framework |
+| Vite | 5.4.2 | Build tool & dev server |
+| Tailwind CSS | 3.4.1 | Utility-first styling |
+| Lucide React | 0.344.0 | Icon library |
+| Bootstrap / React-Bootstrap | 5.3.x | Additional UI components |
+
+> **Note:** The frontend is written in **JavaScript (JSX)**, not TypeScript.
+
+### Backend
+| Technology | Purpose |
+|---|---|
+| Python FastAPI | REST API server on `http://localhost:8000` |
+| gTTS (Google TTS) | Text-to-speech audio generation |
+| PySerial | Serial communication with ESP32 |
+| Supabase (Python) | Optional data persistence |
+
+### Authentication & Database
+- **Supabase** — Auth (email/password) and optional data storage
+- Credentials stored in `.env` (not committed to version control)
+
+### Browser APIs Used
+- **MediaPipe FaceLandmarker** (WASM) — Real-time eye tracking in the browser
+- **Web Speech API** — Browser TTS fallback
+- **SpeechSynthesis** — Multilingual voice output
+
+---
+
+## Prerequisites
+
+- **Node.js** v18 or higher
+- **npm** package manager
+- **Python 3.9+** (for backend)
+- A **Supabase** account (for authentication)
+- **ESP32** microcontroller (optional, for real appliance control)
+
+---
+
+## Installation & Setup
+
+### 1. Clone the repository
+
+```bash
+git clone https://github.com/syedAli124944/ParaLink-Eye-Gaze-Tracking-System.git
+cd ParaLink-Eye-Gaze-Tracking-System
+```
+
+### 2. Frontend Setup
+
+```bash
+cd FYP_EOG_System_For_Paralyzed_people
+npm install
+```
+
+Create a `.env` file in `FYP_EOG_System_For_Paralyzed_people/`:
+
+```env
+VITE_SUPABASE_URL=your-supabase-project-url
+VITE_SUPABASE_ANON_KEY=your-supabase-anon-key
+```
+
+### 3. Backend Setup
+
+```bash
+cd ../backend
+python -m venv .venv
+.venv\Scripts\activate        # Windows
+pip install -r requirements.txt
+```
+
+### 4. Run the Application
+
+**Start the backend** (in the `backend/` directory):
+```bash
+python main.py
+```
+The backend will be available at `http://localhost:8000`.
+
+**Start the frontend** (in the `FYP_EOG_System_For_Paralyzed_people/` directory):
+```bash
+npm run dev
+```
+The frontend will be available at `http://localhost:5173` (or `5174` if port is in use).
+
+---
+
+## Usage
+
+### EOG Interaction
+- **3 blinks** — Select the focused/highlighted element
+- **2 blinks** — Go back / close the current modal
+- Gaze at an element to focus it; a blink counter (`x/3`) appears on the focused item
+
+### EOG Mode Selection (Sidebar)
+1. Enable **EOG Mode** toggle in the sidebar
+2. Choose **Keyboard (Spacebar)** for demo/testing, or **WebCam Tracking** for real eye tracking
+
+### Language Selection
+Select a language from the **Voice Language** dropdown in the sidebar. All TTS output will be in the selected language.
+
+---
+
+## Project Structure
+
+```
+ParaLink-Eye-Gaze-Tracking-System/
+├── FYP_EOG_System_For_Paralyzed_people/   # React Frontend
+│   ├── src/
+│   │   ├── components/
+│   │   │   ├── Dashboard.jsx              # Main dashboard + Contact/About pages
+│   │   │   ├── CommunicationModal.jsx     # Emotion expression cards
+│   │   │   ├── NewsModal.jsx              # News categories and articles
+│   │   │   ├── HomeAppliancesModal.jsx    # IoT device control panel
+│   │   │   ├── EmergencyModal.jsx         # Emergency alert buttons
+│   │   │   ├── Sidebar.jsx                # Navigation + EOG/language controls
+│   │   │   ├── Login.jsx                  # Login page
+│   │   │   ├── SignUp.jsx                 # Signup page
+│   │   │   ├── WelcomeScreen.jsx          # Animated welcome screen
+│   │   │   ├── BlinkIndicator.jsx         # Blink count HUD
+│   │   │   ├── GazeCursor.jsx             # Visual gaze cursor overlay
+│   │   │   └── WebcamPreview.jsx          # Webcam feed (hidden when not needed)
+│   │   ├── contexts/
+│   │   │   ├── AuthContext.jsx            # Supabase auth state
+│   │   │   └── EogContext.jsx             # EOG mode, language, blink state
+│   │   ├── hooks/
+│   │   │   ├── useEogSelection.js         # Per-element EOG focus + blink hook
+│   │   │   └── useDoubleBlink.js          # Double-blink (back/close) hook
+│   │   ├── services/
+│   │   │   ├── EogService.js              # Core blink detection (keyboard & webcam)
+│   │   │   ├── BrowserEyeTracker.js       # MediaPipe FaceLandmarker integration
+│   │   │   ├── TtsService.js              # 3-layer TTS fallback service
+│   │   │   └── ApiService.js              # Backend API communication
+│   │   ├── App.jsx                        # App root + auth routing
+│   │   ├── main.jsx                       # React entry point
+│   │   └── index.css                      # Global styles + Tailwind directives
+│   ├── public/                            # Static assets
+│   ├── index.html                         # HTML entry point
+│   ├── vite.config.js                     # Vite configuration
+│   ├── tailwind.config.js                 # Tailwind configuration
+│   └── package.json                       # Frontend dependencies
+│
+└── backend/                               # Python FastAPI Backend
+    ├── main.py                            # FastAPI app entry point
+    ├── services/
+    │   ├── serial_service.py              # ESP32 serial communication
+    │   └── iot_service.py                 # IoT device command handling
+    └── requirements.txt                   # Python dependencies
+```
+
+---
+
+## Design Philosophy
+
+ParaLink is designed with **accessibility as the primary constraint**:
+
+- **Large touch targets** — All interactive elements are sized for eye-based selection
+- **High contrast gradients** — Distinct color coding per module for quick visual recognition
+- **Minimal cognitive load** — Flat navigation, no nested menus beyond 2 levels
+- **Calm color palette** — Teal/cyan primary tones reduce visual fatigue for long-term use
+- **Responsive layout** — Works on desktop and tablet screens
+
+---
+
+## Backend API Reference
+
+| Endpoint | Method | Description |
+|---|---|---|
+| `/health` | GET | Check if backend is running |
+| `/select` | POST | Send a user selection (communication/device/emergency) |
+| `/tts` | POST | Generate and return a TTS audio file |
+| `/devices/status` | GET | Get current IoT device states |
+| `/history` | GET | Get recent selection history |
+| `/suggestions` | GET | Get smart suggestions based on usage |
+
+**POST /select** body:
+```json
+{
+  "type": "communication | device | emergency",
+  "value": "hungry | light_on | nurse | ...",
+  "language": "en | ur | ar | es | fr | de"
+}
+```
+
+---
+
+## Security
+
+- Supabase handles all authentication; credentials are never stored client-side
+- `.env` file is git-ignored; never committed
+- Session tokens are managed automatically by the Supabase client SDK
+
+---
+
+## License
+
+This project is submitted as a Final Year Project (FYP) for academic evaluation. Intended for educational and research purposes.
+
+## Authors
+
+**FYP Team — ParaLink EOG Communication System**  
+Department of Computer Science  
+COMSATS University Islamabad, Abbottabad Campus
+
+---
+
+*For questions or issues, use the GitHub Issues tracker.*
