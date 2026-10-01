@@ -251,7 +251,7 @@ This project is submitted as a Final Year Project (FYP) for academic evaluation.
 
 **FYP Team — ParaLink EOG Communication System**  
 Department of Computer Science  
-COMSATS University Islamabad, Abbottabad Campus
+Kohat University science and technology
 
 ---
 
